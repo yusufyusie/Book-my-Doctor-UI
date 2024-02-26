@@ -3,7 +3,7 @@ import React from 'react';
 import Logo from '../assets/doc_logo.jpg';
 
 const Navbar = () => (
-  <section className="border-2 h-screen p-2">
+  <section className="border-r-2 h-screen p-2">
     {/* logo */}
     <img src={Logo} alt="logo" className="w-52" />
     {/* nav menu */}
