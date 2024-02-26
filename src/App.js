@@ -1,10 +1,22 @@
 import './App.css';
+import { Route, Routes } from 'react-router-dom';
+import Signin from './routes/Signin';
+import Signup from './routes/Signup';
+import Home from './routes/Home';
+import Details from './routes/Details';
+import Layout from './components/Layout';
 
 function App() {
   return (
-    <div className="App">
-      <h2>Welcome to the final capstone project</h2>
-    </div>
+    <Routes>
+      <Route path="sign_in" element={<Signin />} />
+      <Route path="sign_up" element={<Signup />} />
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="details" element={<Details />} />
+      </Route>
+      <Route />
+    </Routes>
   );
 }
 
