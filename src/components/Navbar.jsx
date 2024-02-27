@@ -21,7 +21,7 @@ function Navbar() {
         <span className="text-gray-800 text-xl font-bold">MODELS</span>
         <span className="text-gray-800 text-xl font-bold">LIFESTYLE</span>
         <NavLink to="/new-appointment">
-          <span className="text-gray-800 text-xl font-bold">Book an Appointment</span>
+          <span className="text-gray-800 text-xl font-bold">Appointment</span>
         </NavLink>
         <span className="text-gray-800 text-xl font-bold">TEST DRIVE</span>
       </div>
