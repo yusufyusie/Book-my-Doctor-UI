@@ -5,12 +5,10 @@ import Signup from './routes/Signup';
 import Home from './routes/Home';
 import Details from './routes/Details';
 import Layout from './components/Layout';
-import Header from './components/Header';
 
 function App() {
   return (
     <>
-      <Header />
       <Routes>
         <Route path="sign_in" element={<Signin />} />
         <Route path="sign_up" element={<Signup />} />
