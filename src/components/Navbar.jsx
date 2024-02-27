@@ -1,4 +1,11 @@
 import React from 'react';
+import {
+  FaVimeoV,
+  FaTwitter,
+  FaFacebookF,
+  FaGooglePlusG,
+  FaPinterestP,
+} from 'react-icons/fa';
 
 import Logo from '../assets/doc_logo.jpg';
 
@@ -15,11 +22,14 @@ const Navbar = () => (
     </div>
     {/* socials */}
     <footer className="absolute bottom-10">
-      <span>twitter</span>
-      <span>facebook</span>
-      <span>google+</span>
-      <span>vim</span>
-      <span>pinterest</span>
+      <div className="flex justify-center gap-4">
+        <FaTwitter />
+        <FaFacebookF />
+        <FaGooglePlusG />
+        <FaVimeoV />
+        <FaPinterestP />
+      </div>
+      <span className="text-xs">copyright 2024 microverse final capstone</span>
     </footer>
   </section>
 );
