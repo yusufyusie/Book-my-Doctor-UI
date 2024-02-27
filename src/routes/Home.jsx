@@ -2,7 +2,7 @@ import React from 'react';
 
 const Home = () => (
   <div>
-    Home
+    <h2 className="text-center text-3xl uppercase">latest models</h2>
   </div>
 );
 
