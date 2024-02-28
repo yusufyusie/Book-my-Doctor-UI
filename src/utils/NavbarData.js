@@ -7,7 +7,7 @@ const navMenu = [
   {
     id: 2,
     path: '/reservations/new',
-    name: 'New Reservation',
+    name: 'Book an Appointment',
   },
   {
     id: 3,
