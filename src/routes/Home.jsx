@@ -14,7 +14,7 @@ import 'slick-carousel/slick/slick-theme.css';
 const Home = () => {
   const settings = {
     dots: true,
-    infinite: true,
+    infinite: false,
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
@@ -25,29 +25,33 @@ const Home = () => {
       <h2 className="text-3xl font-bold uppercase">doctors</h2>
       <h4 className="text-xl text-gray-400">Select a doctor</h4>
 
-      <ul className="w-3/4 border-2">
+      <ul className="slider-container w-3/4">
         { /* eslint-disable-next-line react/jsx-props-no-spreading */ }
         <Slider {...settings}>
           {doctors.map((item) => (
-            <li key={item.id}>
+            <li key={item.id} className="py-2 px-1">
               <Link to={item.id}>
                 <img
                   src={item.image}
                   alt={item.name}
-                  className="w-52 rounded-xl"
+                  className="w-80 h-96 rounded-xl"
                 />
-                <div>
-                  <span>{item.name}</span>
+                <div className="flex flex-col items-center mt-3">
+                  <span className="text-xl font-bold">
+                    Dr.
+                    {' '}
+                    {item.name}
+                  </span>
                   <p>....................</p>
-                  <span>
+                  <span className="text-lg tracking-wide">
                     Specialization is
                     {' '}
                     {item.speciality}
                   </span>
-                  <div>
-                    <FaFacebookF />
-                    <FaTwitter />
-                    <FaCameraRetro />
+                  <div className="flex gap-5 py-3">
+                    <FaFacebookF className="border-2 border-slate-400 rounded-full p-1 text-2xl text-slate-400" />
+                    <FaTwitter className="border-2 border-slate-400 rounded-full p-1 text-2xl text-slate-400" />
+                    <FaCameraRetro className="border-2 border-slate-400 rounded-full p-1 text-2xl text-slate-400" />
                   </div>
                 </div>
               </Link>
