@@ -16,7 +16,7 @@ const Details = () => {
 
   return (
     <div className="flex flex-col items-center gap-4 bg-white rounded-lg p-8 shadow-lg">
-      <Link to="/doctors" className="self-start mb-4 text-blue-700 text-2xl flex items-center">
+      <Link to="/doctors" className="self-start mb-2 text-blue-700 text-2xl flex items-center">
         <FaArrowLeft className="mr-2" />
         {' '}
         Back
