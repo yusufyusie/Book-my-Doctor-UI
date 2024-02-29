@@ -7,6 +7,9 @@ import AddDoctor from './routes/AddDoctor';
 import NewReservation from './routes/NewReservation';
 import Layout from './components/Layout';
 
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+
 function App() {
   return (
     <Routes>

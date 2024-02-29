@@ -3,9 +3,11 @@ import { Outlet } from 'react-router-dom';
 import Navbar from './Navbar';
 
 const Layout = () => (
-  <div className="flex flex-row">
+  <div className="flex">
     <Navbar />
-    <Outlet />
+    <div className="w-10/12">
+      <Outlet />
+    </div>
   </div>
 );
 

@@ -1,18 +1,6 @@
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
-
-const doctors = [
-  {
-    id: 1,
-    name: 'Dr. Smith',
-    specialty: 'Cardiology',
-  },
-  {
-    id: 2,
-    name: 'Dr. Johnson',
-    specialty: 'Neurology',
-  },
-];
+import doctors from '../utils/DoctorData';
 
 function NewReservation() {
   return (
@@ -28,7 +16,7 @@ function NewReservation() {
                   <option value="">Select a doctor</option>
                   {doctors.map((doctor) => (
                     <option key={uuidv4()} value={doctor.id}>
-                      {`${doctor.name} (${doctor.specialty})`}
+                      {`${doctor.name} (${doctor.speciality})`}
                     </option>
                   ))}
                 </select>

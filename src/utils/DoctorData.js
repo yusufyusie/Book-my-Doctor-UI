@@ -1,4 +1,4 @@
-const doctor = [
+const doctors = [
   {
     id: 1,
     name: 'Amanda',
@@ -14,13 +14,13 @@ const doctor = [
   {
     id: 3,
     name: 'Peter',
-    image: 'https://images.pexels.com/photos/8460157/pexels-photo-8460157.jpeg?auto=compress&cs=tinysrgb&w=600',
+    image: 'https://images.pexels.com/photos/12660379/pexels-photo-12660379.jpeg?auto=compress&cs=tinysrgb&w=600',
     speciality: 'Neurology',
   },
   {
     id: 4,
     name: 'Christopher',
-    image: 'https://images.pexels.com/photos/8460157/pexels-photo-8460157.jpeg?auto=compress&cs=tinysrgb&w=600',
+    image: 'https://media.istockphoto.com/id/1346124900/photo/confident-successful-mature-doctor-at-hospital.jpg?b=1&s=612x612&w=0&k=20&c=EIVLvYc2SjFbPGq7pKxXAzkUiSqawv5BuyeVzjSIseM=',
     speciality: 'Dentist',
   },
   {
@@ -31,4 +31,4 @@ const doctor = [
   },
 ];
 
-export default doctor;
+export default doctors;
