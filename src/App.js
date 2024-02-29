@@ -19,7 +19,6 @@ function App() {
       </Route>
       <Route path="reservations" element={<Layout />}>
         <Route path="new" element={<NewReservation />} />
-        {/* Add other routes under /reservations here */}
       </Route>
       <Route />
     </Routes>
