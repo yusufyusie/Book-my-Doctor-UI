@@ -25,7 +25,7 @@ const Navbar = () => (
         <NavLink
           key={menu.id}
           to={menu.path}
-          className={({ isActive }) => `text-gray-800 p-1 text-xl uppercase font-bold no-underline${isActive ? 'text-white w-full bg-lime-500' : ''}`}
+          className={({ isActive }) => `text-gray-800 p-1 text-xl uppercase font-bold no-underline${isActive ? 'text-white bg-lime-500' : ''}`}
         >
           {menu.name}
         </NavLink>
