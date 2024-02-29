@@ -12,7 +12,7 @@ const Details = () => {
     return <p className="text-2xl font-bold text-red-500">Doctor not found</p>;
   }
 
-  const capitalize = (str) => str.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(' ');
+  const capitalize = (str) => str.split(' ').map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(' ');
 
   return (
     <div className="flex flex-col items-center gap-4 bg-white rounded-lg p-8 shadow-lg">
