@@ -14,7 +14,7 @@ const doctors = [
   {
     id: 3,
     name: 'Peter',
-    image: 'https://images.pexels.com/photos/6129104/pexels-photo-6129104.jpeg?auto=compress&cs=tinysrgb&w=600',
+    image: 'https://images.pexels.com/photos/12660379/pexels-photo-12660379.jpeg?auto=compress&cs=tinysrgb&w=600',
     speciality: 'Neurology',
   },
   {
