@@ -14,3 +14,7 @@
 .slick-slide > div {
   margin: 0 10px;
 }
+
+.slick-arrow {
+  transform: rotate(90deg);
+}
