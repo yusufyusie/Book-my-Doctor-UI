@@ -10,3 +10,7 @@
   box-sizing: border-box;
   font-family: 'Titillium Web', sans-serif;
 }
+
+.slick-slide > div {
+  margin: 0 10px;
+}
