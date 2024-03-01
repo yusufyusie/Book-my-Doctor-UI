@@ -33,7 +33,7 @@ const Home = () => {
           <Slider {...settings} className="w-[65rem]">
             {doctors.map((item) => (
               <li key={item.id}>
-                <Link to={item.id}>
+                <Link to={`/doctors/${item.id}`}>
                   <img src={item.image} alt={item.name} className="w-80 h-96 rounded-xl" />
                   <div className="flex flex-col items-center mt-3">
                     <span className="text-xl font-bold">

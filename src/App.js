@@ -18,7 +18,7 @@ function App() {
       <Route path="doctors" element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="new" element={<AddDoctor />} />
-        <Route path="doctors/:doctorId" element={<Details />} />
+        <Route path=":doctorId" element={<Details />} />
       </Route>
       <Route path="reservations" element={<Layout />}>
         <Route path="new" element={<NewReservation />} />
