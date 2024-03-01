@@ -4,6 +4,8 @@ import Signup from './routes/Signup';
 import Home from './routes/Home';
 import Details from './routes/Details';
 import AddDoctor from './routes/AddDoctor';
+import DeleteDoc from './routes/DeleteDoc';
+import Reservation from './routes/Reservation';
 import NewReservation from './routes/NewReservation';
 import Layout from './components/Layout';
 
@@ -19,8 +21,10 @@ function App() {
         <Route index element={<Home />} />
         <Route path="new" element={<AddDoctor />} />
         <Route path=":doctorId" element={<Details />} />
+        <Route path="delete" element={<DeleteDoc />} />
       </Route>
       <Route path="reservations" element={<Layout />}>
+        <Route index element={<Reservation />} />
         <Route path="new" element={<NewReservation />} />
       </Route>
       <Route />
