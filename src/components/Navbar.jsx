@@ -30,6 +30,10 @@ const Navbar = () => (
           {menu.name}
         </NavLink>
       ))}
+
+      <NavLink to="/">
+        <span className="uppercase text-gray-800 font-bold text-xl mt-2">logout</span>
+      </NavLink>
     </div>
     {/* socials */}
     <footer className="absolute bottom-10 left-4">
