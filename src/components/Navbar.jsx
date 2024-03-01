@@ -6,10 +6,17 @@ import {
   FaGooglePlusG,
   FaPinterestP,
 } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 import Logo from '../assets/doc_logo.jpg';
 
-const Navbar = () => (
+const Navbar = () => {
+  const navigate = useNavigate();
+  const handlelogout= () =>{
+    localStorage.removeItem('userdata');
+    navigate ('/') // when implement redux deletes the user data from the store
+  }
+  return (
   <section className="border-r-2 h-screen p-2">
     {/* logo */}
     <img src={Logo} alt="logo" className="w-52" />
@@ -29,9 +36,11 @@ const Navbar = () => (
         <FaVimeoV />
         <FaPinterestP />
       </div>
+      <button onClick={handlelogout}>logout</button>
       <span className="text-xs">copyright 2024 microverse final capstone</span>
     </footer>
   </section>
 );
+}
 
 export default Navbar;
