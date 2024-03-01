@@ -27,7 +27,7 @@ const AddDoctor = () => (
             htmlFor="image"
             className="block text-sm font-medium text-gray-700"
           >
-            Image URL
+            Image URL (e.g. https://www.random/..../)
             <div className="mt-1">
               <input
                 id="image"
