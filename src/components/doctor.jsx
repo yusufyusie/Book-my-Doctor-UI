@@ -12,16 +12,16 @@ const DoctorForm = () => {
     const formData = { name, specialization, cost, image_url: imageUrl };
 
     try {
-      const token = localStorage.getItem('accessToken'); // Assuming the token is stored in localStorage
+      const token = localStorage.getItem('accessToken'); // Our  the token is stored in localStorage
       const response = await fetch('http://127.0.0.1:3001//api/doctors', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`, // Include the token in the Authorization header
+          'Authorization': `Bearer ${token}`, // Included the token in the Authorization header
         },
         body: JSON.stringify({ doctor: formData }),
       });
-      // Rest of the code remains the same
+      
     } catch (error) {
       console.error('Error creating doctor:', error);
       setError('An unexpected error occurred');
