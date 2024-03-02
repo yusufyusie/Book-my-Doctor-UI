@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   FaVimeoV,
   FaTwitter,
@@ -22,8 +23,8 @@ const Navbar = () => {
     <img src={Logo} alt="logo" className="w-52" />
     {/* nav menu */}
     <div className="flex flex-col mt-10 gap-3">
-      <span className="text-gray-800 text-xl font-bold">MODELS</span>
-      <span className="text-gray-800 text-xl font-bold">LIFESTYLE</span>
+      <span className="text-gray-800 text-xl font-bold"> DOCTORS</span>
+      <span className="text-gray-800 text-xl font-bold">Add doctors</span>
       <span className="text-gray-800 text-xl font-bold">SHOP</span>
       <span className="text-gray-800 text-xl font-bold">TEST DRIVE</span>
     </div>

@@ -6,6 +6,8 @@
   import Layout from './components/Layout';
   import Login from './routes/Login';
   import Signin from './routes/Signin';
+import DoctorForm from './components/doctor';
+
 
   function App() {  
     return (
@@ -13,6 +15,7 @@
         <Routes>
         <Route path="/signin" component={Signin} />
           <Route path="/signup" component={Signup} />
+          <Route path="/doctor" component={DoctorForm} />
           <Route path="/" element={<Login />} />
           <Route path="/doctors" element={<Layout />}>
             <Route index element={<Home />} />
