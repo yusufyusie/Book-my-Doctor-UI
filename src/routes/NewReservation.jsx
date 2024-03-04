@@ -1,14 +1,45 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
-import doctors from '../utils/DoctorData';
+
+import { getDoctors } from '../redux/doctors/doctorsSlice';
+import { postReservation } from '../redux/reservations/reservationsSlice';
 
 function NewReservation() {
+  const dispatch = useDispatch();
+  const { token } = useSelector((state) => state.auth);
+  const { doctors, isLoading, error } = useSelector((state) => state.doctors);
+
+  useEffect(() => {
+    dispatch(getDoctors(token));
+  }, [dispatch, token]);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const { doctor, date, time, reason } = event.target.elements;
+    dispatch(postReservation(token, doctor.value, date.value, time.value, reason.value));
+  };
+
+  if (isLoading) {
+    return <div>Loading......</div>;
+  }
+
+  if (error) {
+    return (
+      <p>
+        Something went wrong!
+        <br />
+        {error}
+      </p>
+    );
+  }
+
   return (
     <div className="min-h-screen flex flex-col gap-8 justify-center items-center w-full bg-gray-100 py-6 sm:px-6 lg:px-8">
       <div className="mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Book an Appointment</h2>
-          <form className="mt-8 space-y-6">
+          <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
             <label htmlFor="doctor" className="block text-sm font-medium text-gray-700">
               Select Doctor
               <div className="mt-1">
