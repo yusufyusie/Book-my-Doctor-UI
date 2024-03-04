@@ -59,23 +59,18 @@ const userSlice = createSlice({
     logout: (state) => {
       state.user = [];
     },
-    setName: (state, action) => {
-      const userId = action.payload;
-      const user = state.userContent.find((item) => item.id === userId);
-      state.userName = user ? user.name : null;
-    },
   },
   extraReducers: (builder) => {
     builder.addCase(signupUser.fulfilled, (state, action) => {
       state.status = 'succeeded';
-      state.user = action.payload;
+      state.userContent = action.payload;
     }).addCase(signinUser.fulfilled, (state, action) => {
       state.status = 'succeeded';
-      state.user = action.payload.response.data.user.id;
+      state.userContent = action.payload.response.data.user.id;
       localStorage.setItem('userdata', JSON.stringify(action.payload.response.data.user.id));
     });
   },
 });
 
 export default userSlice.reducer;
-export const { logout, setName } = userSlice.actions;
+export const { logout } = userSlice.actions;
