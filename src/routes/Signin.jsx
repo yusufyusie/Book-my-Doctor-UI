@@ -1,37 +1,32 @@
 import React, { useState } from 'react';
+// eslint-disable-next-line no-unused-vars
 import { useNavigate, Link } from 'react-router-dom';
-import { v4 as uuid } from 'uuid';
-import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
-import { signupUser } from '../redux/user/userSlice';
+import { toast } from 'react-toastify';
+import { signinUser } from '../redux/user/userSlice';
 
-const Signup = () => {
+const Signin = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [passConfirm, setPassConfirm] = useState('');
 
-  const signUpSubmit = async (e) => {
+  const signInSubmit = async (e) => {
     e.preventDefault();
-    const addUser = {
-      id: uuid(),
-      name,
+
+    const loginUser = {
       email,
       password,
-      password_confirmation: passConfirm,
     };
+
     // eslint-disable-next-line max-len
-    if (name.length !== 0 && email.length !== 0 && password.length !== 0 && passConfirm.length !== 0) {
-      await dispatch(signupUser(addUser));
-      setName('');
-      setEmail('');
-      setPassword('');
+    if (email.length !== 0 && password.length !== 0) {
+      await dispatch(signinUser(loginUser));
+      toast.success('Welcome back!');
       navigate('/doctors');
     } else {
-      toast.error('Please enter a name or email address');
+      toast.error('Please enter your email address and password');
     }
   };
 
@@ -40,24 +35,9 @@ const Signup = () => {
       <div className="mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-            Sign Up
+            Sign In
           </h2>
-          <form className="mt-8 space-y-6" onSubmit={signUpSubmit}>
-            <label
-              htmlFor="name"
-              className="block text-sm font-medium text-gray-700"
-            >
-              Full name
-              <div className="mt-1">
-                <input
-                  type="text"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  required
-                />
-              </div>
-            </label>
+          <form className="mt-8 space-y-6" onSubmit={signInSubmit}>
             <label
               htmlFor="email"
               className="block text-sm font-medium text-gray-700"
@@ -88,39 +68,24 @@ const Signup = () => {
                 />
               </div>
             </label>
-            <label
-              htmlFor="password_confirmation"
-              className="block text-sm font-medium text-gray-700"
-            >
-              Confirm password
-              <div className="mt-1">
-                <input
-                  type="password"
-                  value={passConfirm}
-                  onChange={(e) => setPassConfirm(e.target.value)}
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  required
-                />
-              </div>
-            </label>
             <div>
               <button
                 type="submit"
                 className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-500 hover:bg-white hover:text-green-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
               >
-                Sign up
+                Sign in
               </button>
             </div>
           </form>
         </div>
         <p className="mt-4 text-center">
-          have an account?
+          New here?
           {' '}
-          <Link to="/" className="underline text-indigo-500 font-semibold">Click here to log in</Link>
+          <Link to="/sign_up" className="underline text-indigo-500 font-semibold">Click here to sign up</Link>
         </p>
       </div>
     </div>
   );
 };
 
-export default Signup;
+export default Signin;

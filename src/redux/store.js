@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
+<<<<<<< HEAD
 import { logger } from 'redux-logger';
 import doctorReducer from './doctorReducer';
 import reservationsReducer from './reservations/reservationsSlice';
@@ -9,8 +10,16 @@ const store = configureStore({
     doctorData: doctorReducer,
     reservations: reservationsReducer,
     auth: authReducer,
+=======
+import doctorReducer from './doctor/doctorSlice';
+import userReducer from './user/userSlice';
+
+const store = configureStore({
+  reducer: {
+    user: userReducer,
+    doctor: doctorReducer,
+>>>>>>> origin/redux-feature
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
 });
 
 export default store;
