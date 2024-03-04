@@ -5,8 +5,9 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 import { setToken } from '../redux/auth/authSlice';
 
-const Signin = () => {
+const SignIn = () => {
   const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -18,30 +19,28 @@ const Signin = () => {
       const response = await axios.post(
         'http://localhost:3001/api/v1/login',
         {
-          email,
+          user: {
+            email,
+            password,
+          },
         },
       );
       if (response.status === 200) {
-        // Save the token in redux store
         dispatch(setToken(response.data));
-
-        // Save the token in Cookies
         Cookies.set('token', response.data.token, { expires: 7, secure: true });
-        Cookies.set('email', response.data.email, {
-          expires: 7,
-          secure: true,
-        });
+        Cookies.set('email', response.data.email, { expires: 7, secure: true });
 
-        setSuccessMessage(
-          'Success! Redirecting to home page...',
-        );
+        // Save token to localStorage
+        localStorage.setItem('token', response.data.token);
+
+        setSuccessMessage('Success! Redirecting to home page...');
         setEmail('');
+        setPassword('');
         setTimeout(() => {
           setSuccessMessage('');
           navigate('/');
         }, 2000);
       } else {
-        // Handle other status codes if needed
         setErrorMessage(`Sign-in failed with status: ${response.status}`);
       }
     } catch (error) {
@@ -57,17 +56,24 @@ const Signin = () => {
       <h1 className="text-3xl font-bold">Sign In</h1>
       {successMessage && <p className="text-green-500">{successMessage}</p>}
       {errorMessage && <p className="text-red-500">{errorMessage}</p>}
-      <label
-        htmlFor="email"
-        className="flex flex-col gap-4"
-      >
+      <label htmlFor="email" className="flex flex-col gap-4">
         Email:
         <input
           className="p-2 rounded-md border border-gray-300"
-          type="text"
+          type="email"
           id="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+        />
+      </label>
+      <label htmlFor="password" className="flex flex-col gap-4">
+        Password:
+        <input
+          className="p-2 rounded-md border border-gray-300"
+          type="password"
+          id="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
         />
       </label>
       <button
@@ -81,4 +87,4 @@ const Signin = () => {
   );
 };
 
-export default Signin;
+export default SignIn;
