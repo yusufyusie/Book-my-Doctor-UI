@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// eslint-disable-next-line no-unused-vars
 import { useNavigate, Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
@@ -20,7 +19,6 @@ const Signin = () => {
       password,
     };
 
-    // eslint-disable-next-line max-len
     if (email.length !== 0 && password.length !== 0) {
       await dispatch(signinUser(loginUser));
       toast.success('Welcome back!');
@@ -31,8 +29,8 @@ const Signin = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col gap-8 justify-center items-center w-full bg-gray-100 py-6 sm:px-6 lg:px-8">
-      <div className="mx-auto sm:w-full sm:max-w-md">
+    <div className="min-h-screen flex flex-col gap-8 justify-center items-center w-full bg-gray-100 py-6 px-6 lg:px-8">
+      <div className="mx-auto sm:w-full sm:max-w-md lg:max-w-lg">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
             Sign In
