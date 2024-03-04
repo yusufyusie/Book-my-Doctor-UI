@@ -29,7 +29,7 @@ const Signup = () => {
       setName('');
       setEmail('');
       setPassword('');
-      navigate('/doctors');
+      navigate('/');
     } else {
       toast.error('Please enter a name or email address');
     }
