@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
 // eslint-disable-next-line no-unused-vars
-import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate, Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { signinUser } from '../redux/user/userSlice';
+import { toast } from 'react-toastify';
 
 const Signin = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  // const user = useSelector((state) => state.user.users);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -15,11 +15,18 @@ const Signin = () => {
   const signInSubmit = async (e) => {
     e.preventDefault();
 
-    try {
-      await dispatch(signinUser({ name: email }));
+    const loginUser = {
+      email,
+      password,
+    };
+
+    // eslint-disable-next-line max-len
+    if (email.length !== 0 && password.length !== 0) {
+      await dispatch(signinUser(loginUser));
+      toast.success('Welcome back!');
       navigate('/doctors');
-    } catch (err) {
-      console.error(`message: ${err}`);
+    } else {
+      toast.error('Please enter your email address and password');
     }
   };
 
