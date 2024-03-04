@@ -31,25 +31,25 @@ const SignIn = () => {
         Cookies.set('email', response.data.email, { expires: 7, secure: true });
 
         // Save token to localStorage
-        localStorage.setItem('token', response.data.token);
+       localStorage.setItem('token', response.data.token);
 
-        setSuccessMessage('Success! Redirecting to home page...');
-        setEmail('');
-        setPassword('');
-        setTimeout(() => {
-          setSuccessMessage('');
-          navigate('/');
-        }, 2000);
-      } else {
-        setErrorMessage(`Sign-in failed with status: ${response.status}`);
-      }
-    } catch (error) {
-      setErrorMessage(`Sign-in failed: ${error.message}`);
-      setTimeout(() => {
-        setErrorMessage('');
-      }, 5000);
-    }
-  };
+       setSuccessMessage('Success! Redirecting to home page...');
+       setEmail('');
+       setPassword('');
+       setTimeout(() => {
+         setSuccessMessage('');
+         navigate('/doctors');
+       }, 2000);
+     } else {
+       setErrorMessage(`Sign-in failed with status: ${response.status}`);
+     }
+   } catch (error) {
+     setErrorMessage(`Sign-in failed: ${error.message}`);
+     setTimeout(() => {
+       setErrorMessage('');
+     }, 5000);
+   }
+ };
 
   return (
     <div className="flex flex-col gap-8 justify-center items-center w-full">

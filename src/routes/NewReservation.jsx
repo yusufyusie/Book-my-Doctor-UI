@@ -24,6 +24,9 @@ const NewReservation = () => {
   const formRef = useRef(null);
   const [success, setSuccess] = useState(null);
   const [fail, setFail] = useState(null);
+  const [date, setDate] = useState(null);
+  const [time, setTime] = useState(null);
+  const [doctorId, setDoctorId] = useState(null);
 
   const resetform = () => {
     formRef.current.reset();
@@ -32,6 +35,14 @@ const NewReservation = () => {
   useEffect(() => {
     dispatch(getDoctors(token));
   }, [dispatch, token]);
+
+  useEffect(() => {
+    if (date && time && doctorId) {
+      const doctor = doctors.find((space) => Number(space.id) === Number(doctorId));
+      const dateTime = new Date(`${date}T${time}`);
+      // Use the doctor and dateTime variables here
+    }
+  }, [date, time, doctorId, doctors]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -81,8 +92,15 @@ const NewReservation = () => {
             <label htmlFor="doctor" className="block text-sm font-medium text-gray-700">
               Select Doctor
               <div className="mt-1">
-                <select id="doctor" name="doctor" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
-                  <option value="">Select a doctor</option>
+                <select
+                  id="doctor"
+                  name="doctor"
+                  defaultValue="placeholder"
+                  onChange={(e) => setDoctorId(e.target.value)}
+                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  required
+                >
+                  <option value="placeholder">Select a doctor</option>
                   {doctors.map((doctor) => (
                     <option key={uuidv4()} value={doctor.id}>
                       {`${doctor.name} (${doctor.speciality})`}
