@@ -3,7 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { createSelector } from 'reselect';
 import { v4 as uuidv4 } from 'uuid';
 
-import { getDoctors } from '../redux/doctors/doctorsSlice';
+// eslint-disable-next-line import/named
+import { getDoctors } from '../redux/doctor/doctorSlice';
 import { postReservation } from '../redux/reservations/reservationsSlice';
 
 // Create memoized selectors
@@ -24,8 +25,6 @@ const NewReservation = () => {
   const formRef = useRef(null);
   const [success, setSuccess] = useState(null);
   const [fail, setFail] = useState(null);
-  const [date, setDate] = useState(null);
-  const [time, setTime] = useState(null);
   const [doctorId, setDoctorId] = useState(null);
 
   const resetform = () => {
@@ -36,13 +35,6 @@ const NewReservation = () => {
     dispatch(getDoctors(token));
   }, [dispatch, token]);
 
-  useEffect(() => {
-    if (date && time && doctorId) {
-      const doctor = doctors.find((space) => Number(space.id) === Number(doctorId));
-      const dateTime = new Date(`${date}T${time}`);
-      // Use the doctor and dateTime variables here
-    }
-  }, [date, time, doctorId, doctors]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
