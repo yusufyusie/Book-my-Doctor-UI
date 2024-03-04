@@ -6,14 +6,17 @@ const DOCTORS_URL = 'http://localhost:3001/api/v1/doctors';
 export const getDoctors = createAsyncThunk(
   'doctors/getDoctors',
   async (token, { rejectWithValue }) => {
+    console.log('Token:', token); // Add this line
     try {
       const resp = await axios.get(DOCTORS_URL, {
-        headers: {
+ headers: {
           Authorization: `Bearer ${token}`,
         },
       });
+      console.log('API response:', resp.data);
       return resp.data;
     } catch (error) {
+      console.log('API error:', error.response.data);
       return rejectWithValue(error.response.data);
     }
   },
@@ -25,7 +28,7 @@ export const getDoctor = createAsyncThunk(
     const { id, token } = data;
     try {
       const resp = await axios.get(`${DOCTORS_URL}/${id}`, {
-        headers: {
+ headers: {
           Authorization: `Bearer ${token}`,
         },
       });
@@ -115,7 +118,7 @@ export const doctorsSlice = createSlice({
       })
       .addCase(getDoctor.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.doctor = action.payload;
+        state.doctor = action.payload.doctor; // Adjusted this line
       })
       .addCase(getDoctor.rejected, (state, action) => {
         state.isLoading = false;

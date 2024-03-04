@@ -27,8 +27,8 @@ const SignIn = () => {
       );
       if (response.status === 200) {
         dispatch(setToken(response.data));
-        Cookies.set('token', response.data.token, { expires: 7, secure: true });
-        Cookies.set('email', response.data.email, { expires: 7, secure: true });
+        Cookies.set('token', response.data.token, { expires: 14, secure: true });
+        Cookies.set('email', response.data.email, { expires: 14, secure: true });
 
         // Save token to localStorage
        localStorage.setItem('token', response.data.token);
