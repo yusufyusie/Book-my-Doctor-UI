@@ -3,10 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { createSelector } from 'reselect';
 import { v4 as uuidv4 } from 'uuid';
 
-// eslint-disable-next-line import/named
-import { getDoctors } from '../redux/doctor/doctorSlice';
-import { postReservation } from '../redux/reservations/reservationsSlice';
-
 // Create memoized selectors
 const selectDoctors = createSelector(
   (state) => state.doctors,
@@ -25,15 +21,11 @@ const NewReservation = () => {
   const formRef = useRef(null);
   const [success, setSuccess] = useState(null);
   const [fail, setFail] = useState(null);
-  const [doctorId, setDoctorId] = useState(null);
+  const [, setDoctorId] = useState(null);
 
   const resetform = () => {
     formRef.current.reset();
   };
-
-  useEffect(() => {
-    dispatch(getDoctors(token));
-  }, [dispatch, token]);
 
 
   useEffect(() => {
@@ -61,19 +53,6 @@ const NewReservation = () => {
       data,
       token,
     };
-
-    dispatch(postReservation(sendData))
-      .then((res) => {
-        if (res.payload.success) {
-          setSuccess(res.payload.success);
-        } else if (res.payload.errors) {
-          throw res.payload.errors;
-        }
-      })
-      .catch((err) => {
-        setFail(err);
-      });
-  };
 
   return (
     <div className="min-h-screen flex flex-col gap-8 justify-center items-center w-full bg-gray-100 py-6 sm:px-6 lg:px-8">
