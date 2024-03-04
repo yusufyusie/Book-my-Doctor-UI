@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const DOCTORS_URL = 'https://doctor-reservation.onrender.com/api/v1/doctors';
+const DOCTORS_URL = 'http://localhost:3001/api/v1/doctors';
 
 export const getDoctors = createAsyncThunk(
   'doctors/getDoctors',
@@ -104,7 +104,7 @@ export const doctorsSlice = createSlice({
       })
       .addCase(getDoctors.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.doctors = action.payload.doctors;
+        state.doctors = action.payload;
       })
       .addCase(getDoctors.rejected, (state, action) => {
         state.isLoading = false;
@@ -115,7 +115,7 @@ export const doctorsSlice = createSlice({
       })
       .addCase(getDoctor.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.doctor = action.payload.doctor;
+        state.doctor = action.payload;
       })
       .addCase(getDoctor.rejected, (state, action) => {
         state.isLoading = false;
