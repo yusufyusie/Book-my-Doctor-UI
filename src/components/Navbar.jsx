@@ -10,6 +10,7 @@ import {
 } from 'react-icons/fa';
 import { TiSocialGooglePlus } from 'react-icons/ti';
 import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
 import navMenu from '../utils/NavbarData';
 import { logout } from '../redux/user/userSlice';
 
@@ -22,6 +23,7 @@ const Navbar = () => {
   const logoutUser = () => {
     dispatch(logout);
     localStorage.removeItem('userdata');
+    toast.success('Logout successfully!');
     navigate('/');
   };
 
