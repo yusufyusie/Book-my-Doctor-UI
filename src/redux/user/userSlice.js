@@ -23,7 +23,7 @@ export const signupUser = createAsyncThunk('user/signup', async (data) => {
 
   try {
     const response = await axios.post(signupUrl, addUser);
-    toast.success('Signup successful. Please sign in.');
+    toast.success('Signup successful.');
     return { data, response };
   } catch (error) {
     throw error.response.data;
@@ -66,8 +66,8 @@ const userSlice = createSlice({
       state.userContent = action.payload;
     }).addCase(signinUser.fulfilled, (state, action) => {
       state.status = 'succeeded';
-      state.userContent = action.payload.response.data.user.id;
-      localStorage.setItem('userdata', JSON.stringify(action.payload.response.data.user.id));
+      state.userContent = action.payload.response.data.user;
+      localStorage.setItem('token', JSON.stringify(action.payload.response.data.user));
     });
   },
 });
