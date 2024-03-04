@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-// eslint-disable-next-line no-unused-vars
-import { useDispatch, useSelector } from 'react-redux';
+import { v4 as uuid } from 'uuid';
+import { toast } from 'react-toastify';
+import { useDispatch } from 'react-redux';
 import { signupUser } from '../redux/user/userSlice';
 
 const Signup = () => {
@@ -11,18 +12,26 @@ const Signup = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [passConfirm, setPassConfirm] = useState('');
 
   const signUpSubmit = async (e) => {
     e.preventDefault();
-
-    try {
-      await dispatch(signupUser({ name, email, password }));
+    const addUser = {
+      id: uuid(),
+      name,
+      email,
+      password,
+      password_confirmation: passConfirm,
+    };
+    // eslint-disable-next-line max-len
+    if (name.length !== 0 && email.length !== 0 && password.length !== 0 && passConfirm.length !== 0) {
+      await dispatch(signupUser(addUser));
       setName('');
       setEmail('');
       setPassword('');
       navigate('/doctors');
-    } catch (err) {
-      console.error(`message: ${err}`);
+    } else {
+      toast.error('Please enter a name or email address');
     }
   };
 
@@ -74,6 +83,21 @@ const Signup = () => {
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  required
+                />
+              </div>
+            </label>
+            <label
+              htmlFor="password_confirmation"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Confirm password
+              <div className="mt-1">
+                <input
+                  type="password"
+                  value={passConfirm}
+                  onChange={(e) => setPassConfirm(e.target.value)}
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   required
                 />
