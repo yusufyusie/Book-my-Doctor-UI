@@ -1,45 +1,83 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { createSelector } from 'reselect';
 import { v4 as uuidv4 } from 'uuid';
 
 import { getDoctors } from '../redux/doctors/doctorsSlice';
 import { postReservation } from '../redux/reservations/reservationsSlice';
 
-function NewReservation() {
+// Create memoized selectors
+const selectDoctors = createSelector(
+  (state) => state.doctors,
+  (doctors) => doctors || {},
+);
+
+const selectToken = createSelector(
+  (state) => state.auth,
+  (auth) => (auth ? auth.token : null),
+);
+
+const NewReservation = () => {
+  const { doctors = [] } = useSelector(selectDoctors);
+  const token = useSelector(selectToken);
   const dispatch = useDispatch();
-  const { token } = useSelector((state) => state.auth);
-  const { doctors, isLoading, error } = useSelector((state) => state.doctors);
+  const formRef = useRef(null);
+  const [success, setSuccess] = useState(null);
+  const [fail, setFail] = useState(null);
+
+  const resetform = () => {
+    formRef.current.reset();
+  };
 
   useEffect(() => {
     dispatch(getDoctors(token));
   }, [dispatch, token]);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setSuccess(null);
+      setFail(null);
+    }, 5000);
+
+    if (success) {
+      resetform();
+    }
+    return () => clearTimeout(timer);
+  }, [success, fail, dispatch]);
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    const { doctor, date, time, reason } = event.target.elements;
-    dispatch(postReservation(token, doctor.value, date.value, time.value, reason.value));
+    const data = {
+      doctor: event.target.doctor.value,
+      date: event.target.date.value,
+      time: event.target.time.value,
+      reason: event.target.reason.value,
+    };
+
+    const sendData = {
+      data,
+      token,
+    };
+
+    dispatch(postReservation(sendData))
+      .then((res) => {
+        if (res.payload.success) {
+          setSuccess(res.payload.success);
+        } else if (res.payload.errors) {
+          throw res.payload.errors;
+        }
+      })
+      .catch((err) => {
+        setFail(err);
+      });
   };
-
-  if (isLoading) {
-    return <div>Loading......</div>;
-  }
-
-  if (error) {
-    return (
-      <p>
-        Something went wrong!
-        <br />
-        {error}
-      </p>
-    );
-  }
 
   return (
     <div className="min-h-screen flex flex-col gap-8 justify-center items-center w-full bg-gray-100 py-6 sm:px-6 lg:px-8">
       <div className="mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Book an Appointment</h2>
-          <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+          <form className="mt-8 space-y-6" onSubmit={handleSubmit} ref={formRef}>
             <label htmlFor="doctor" className="block text-sm font-medium text-gray-700">
               Select Doctor
               <div className="mt-1">
@@ -81,6 +119,6 @@ function NewReservation() {
       </div>
     </div>
   );
-}
+};
 
 export default NewReservation;
