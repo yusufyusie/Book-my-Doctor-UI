@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 // eslint-disable-next-line no-unused-vars
 import { useNavigate, Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { signinUser } from '../redux/user/userSlice';
 import { toast } from 'react-toastify';
+import { signinUser } from '../redux/user/userSlice';
 
 const Signin = () => {
   const dispatch = useDispatch();
