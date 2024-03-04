@@ -23,7 +23,6 @@ const Signup = () => {
       password,
       password_confirmation: passConfirm,
     };
-    // eslint-disable-next-line max-len
     if (name.length !== 0 && email.length !== 0 && password.length !== 0 && passConfirm.length !== 0) {
       await dispatch(signupUser(addUser));
       setName('');
@@ -36,8 +35,8 @@ const Signup = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col gap-8 justify-center items-center w-full bg-gray-100 py-6 sm:px-6 lg:px-8">
-      <div className="mx-auto sm:w-full sm:max-w-md">
+    <div className="min-h-screen flex flex-col gap-8 justify-center items-center w-full bg-gray-100 py-6 px-6 lg:px-8">
+      <div className="mx-auto sm:w-full sm:max-w-md lg:max-w-lg">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
             Sign Up
