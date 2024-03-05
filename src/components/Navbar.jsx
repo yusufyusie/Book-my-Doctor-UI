@@ -26,16 +26,13 @@ const Navbar = () => {
   };
 
   return (
-    <section className="relative bg-white shadow-md md:flex md:flex-col md:justify-between h-screen w-full md:w-64 border-r-2">
+    <section className="relative bg-white shadow-md flex flex-col justify-between h-screen w-full md:w-64 border-r-2">
       {/* logo */}
-      <div className="p-2 md:hidden flex justify-between items-center">
-        <img src={Logo} alt="logo" className="w-20 md:w-52 rounded-md" />
-        <button type="button" onClick={() => setIsOpen(!isOpen)} aria-label="Open or close menu" className="text-2xl md:hidden">
+      <div className="p-2 flex justify-between items-center bg-gray-800">
+        <img src={Logo} alt="logo" className="w-20 md:w-52 h-20 md:h-52 rounded-md" />
+        <button type="button" onClick={() => setIsOpen(!isOpen)} aria-label="Open or close menu" className="text-2xl md:hidden text-white">
           {isOpen ? <FaTimes /> : <FaBars />}
         </button>
-      </div>
-      <div className="p-2 hidden md:block">
-        <img src={Logo} alt="logo" className="w-52 rounded-md" />
       </div>
       {/* nav menu */}
       <div className={`fixed z-10 inset-0 bg-white transform transition-transform duration-200 ease-in-out ${isOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 md:static md:inset-auto`}>
@@ -56,7 +53,7 @@ const Navbar = () => {
         </div>
       </div>
       {/* socials */}
-      <footer className="absolute bottom-10 left-4 md:static">
+      <footer className="absolute bottom-10 left-4 md:static bg-gray-800 text-white p-4">
         <div className="flex justify-center gap-4">
           <FaTwitter />
           <FaFacebookF />
