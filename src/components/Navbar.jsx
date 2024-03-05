@@ -26,11 +26,11 @@ const Navbar = () => {
   };
 
   return (
-    <section className="relative bg-white shadow-md flex flex-col justify-between h-screen w-full md:w-64 border-r-2">
+    <section className="relative bg-white shadow-md flex flex-col justify-between h-screen w-full md:w-64 border-r-2 transition-all duration-500 ease-in-out">
       {/* logo */}
-      <div className="p-2 flex justify-between items-center bg-gray-800">
-        <img src={Logo} alt="logo" className="w-20 md:w-52 h-20 md:h-52 rounded-md" />
-        <button type="button" onClick={() => setIsOpen(!isOpen)} aria-label="Open or close menu" className="text-2xl md:hidden text-white">
+      <div className="p-2 flex justify-between items-center">
+        <img src={Logo} alt="logo" className="w-20 md:w-52 h-20 md:h-52 rounded-md transition-all duration-500 ease-in-out" />
+        <button type="button" onClick={() => setIsOpen(!isOpen)} aria-label="Open or close menu" className="text-2xl md:hidden bg-gray-800 text-white p-2 rounded">
           {isOpen ? <FaTimes /> : <FaBars />}
         </button>
       </div>
@@ -41,7 +41,7 @@ const Navbar = () => {
             <NavLink
               key={menu.id}
               to={menu.path}
-              className={({ isActive }) => `text-gray-800 p-1 text-xl uppercase font-bold no-underline${isActive ? 'text-white bg-lime-500' : ''}`}
+              className={({ isActive }) => `text-gray-800 p-1 text-xl uppercase font-bold no-underline transition-colors duration-200 ease-in-out${isActive ? 'text-white bg-lime-500' : ''}`}
               onClick={closeMobileMenu}
             >
               {menu.name}
@@ -53,7 +53,7 @@ const Navbar = () => {
         </div>
       </div>
       {/* socials */}
-      <footer className="absolute bottom-10 left-4 md:static bg-gray-800 text-white p-4">
+      <footer className="absolute bottom-10 left-4 md:static">
         <div className="flex justify-center gap-4">
           <FaTwitter />
           <FaFacebookF />
