@@ -1,10 +1,34 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { v4 as uuid } from 'uuid';
+import { postDoctor } from '../redux/doctor/doctorSlice';
 
 const AddDoctor = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [name, setName] = useState('');
   const [image, setImage] = useState('');
   const [specialization, setSpecialization] = useState('');
   const [cost, setCost] = useState('');
+
+  const handleAdd = async (e) => {
+    e.preventDefault();
+
+    const newDoctor = {
+      id: uuid(),
+      name,
+      image_url: image,
+      specialization,
+      cost,
+    };
+    if (name && image && specialization && cost) {
+      await dispatch(postDoctor(newDoctor));
+      setName(''); setImage(''); setSpecialization(''); setCost('');
+      navigate('/doctors');
+    }
+  };
 
   return (
     <div className="min-h-screen flex flex-col gap-8 justify-center items-center w-full bg-gray-100 py-6 sm:px-6 lg:px-8">
@@ -13,7 +37,7 @@ const AddDoctor = () => {
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
             Add a doctor
           </h2>
-          <form className="mt-8 space-y-6">
+          <form className="mt-8 space-y-6" onSubmit={handleAdd}>
             <label
               htmlFor="name"
               className="block text-sm font-medium text-gray-700"
