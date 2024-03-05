@@ -20,8 +20,7 @@ export const fetchDoctors = createAsyncThunk('doctors/fetchdoctors', async (_, {
 
 export const postDoctor = createAsyncThunk('doctors/postDoctor', async (postData, { rejectWithValue }) => {
   try {
-    const headers = getHeaders();
-    const response = await axios.post(doctorURL, postData, { headers });
+    const response = await axios.post(doctorURL, postData, getHeaders());
     toast.success('Added successfully!');
     return response.data;
   } catch (err) {
@@ -55,11 +54,16 @@ const doctorSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchDoctors.fulfilled, (state, action) => action.payload)
-      .addCase(postDoctor.fulfilled, (state, action) => [...state, action.payload]
-        .addCase(fetchDoctorById.fulfilled, (state, action) => action.payload)
-        .addCase(deleteDoctor.fulfilled,
-          (state, action) => state.filter((doctor) => doctor.id === action.payload)));
+      .addCase(fetchDoctors.fulfilled, (state, action) => {
+        state.doctorsContent = action.payload;
+      }).addCase(postDoctor.fulfilled, (state, action) => {
+        state.doctorsContent = [...state.doctorsContent, action.payload];
+      }).addCase(fetchDoctorById.fulfilled, (state, action) => {
+        state.doctorsContent = action.payload;
+      }).addCase(deleteDoctor.fulfilled, (state, action) => {
+        // eslint-disable-next-line max-len
+        state.doctorsContent = state.doctorsContent.filter((doctor) => doctor.id !== action.payload);
+      });
   },
 });
 
