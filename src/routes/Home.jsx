@@ -12,8 +12,6 @@ const Home = () => {
   const doctors = useSelector((state) => state.doctor.doctorsContent.data || []);
   const { windowWidth } = useWindowSize();
 
-  console.log(doctors);
-
   useEffect(() => {
     dispatch(fetchDoctors());
   }, [dispatch]);
