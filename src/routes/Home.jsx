@@ -45,7 +45,7 @@ const Home = () => {
       <h4 className="text-xl text-gray-400">Select a doctor</h4>
 
       <div className="mt-10">
-        <div className="flex items-center">
+        <div className="flex items-center justify-center">
           { /* eslint-disable-next-line react/jsx-props-no-spreading */ }
           <Slider {...settings} className="w-[65rem]">
             {doctors?.map((item) => (
