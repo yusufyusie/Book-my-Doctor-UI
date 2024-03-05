@@ -52,6 +52,7 @@ const Home = () => (
 
     <ul className="mt-10 w-full">
       <div className="flex items-center justify-center gap-10">
+        {/* eslint-disable-next-line react/jsx-props-no-spreading */}
         <Slider {...settings} className="w-full">
           {doctors.map((item) => (
             <li key={item.id} className="px-4">
