@@ -1,13 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import {
-  FaVimeoV,
-  FaTwitter,
-  FaFacebookF,
-  FaPinterestP,
-  FaBars,
-  FaTimes,
-} from 'react-icons/fa';
+import { FaVimeoV, FaTwitter, FaFacebookF, FaPinterestP, FaBars, FaTimes } from 'react-icons/fa';
 import { TiSocialGooglePlus } from 'react-icons/ti';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
@@ -33,16 +26,16 @@ const Navbar = () => {
   };
 
   return (
-    <section className="relative md:flex md:flex-col md:justify-between h-screen w-full md:w-64 border-r-2">
+    <section className="relative bg-white shadow-md md:flex md:flex-col md:justify-between h-screen w-full md:w-64 border-r-2">
       {/* logo */}
-      <div className="p-2">
-        <img src={Logo} alt="logo" className="w-52 rounded-md hidden md:block" />
-      </div>
-      {/* mobile menu */}
-      <div className="md:hidden absolute top-0 right-0 p-4">
-        <button type="button" onClick={() => setIsOpen(!isOpen)} aria-label="Open or close menu">
+      <div className="p-2 md:hidden flex justify-between items-center">
+        <img src={Logo} alt="logo" className="w-20 md:w-52 rounded-md" />
+        <button type="button" onClick={() => setIsOpen(!isOpen)} aria-label="Open or close menu" className="text-2xl md:hidden">
           {isOpen ? <FaTimes /> : <FaBars />}
         </button>
+      </div>
+      <div className="p-2 hidden md:block">
+        <img src={Logo} alt="logo" className="w-52 rounded-md" />
       </div>
       {/* nav menu */}
       <div className={`fixed z-10 inset-0 bg-white transform transition-transform duration-200 ease-in-out ${isOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 md:static md:inset-auto`}>
@@ -57,13 +50,8 @@ const Navbar = () => {
               {menu.name}
             </NavLink>
           ))}
-          <button type="button" onClick={logoutUser} aria-label="Logout">
-            <span className="uppercase text-gray-800 font-bold text-xl mt-2">logout</span>
-          </button>
-        </div>
-        <div className="absolute top-0 right-0 p-4 md:hidden">
-          <button type="button" onClick={() => setIsOpen(false)} aria-label="Close menu">
-            <FaTimes />
+          <button type="button" onClick={logoutUser} aria-label="Logout" className="mt-2 p-1 text-xl uppercase font-bold text-gray-800">
+            logout
           </button>
         </div>
       </div>

@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
@@ -19,32 +18,52 @@ const Home = () => {
     slidesToScroll: 1,
     nextArrow: <TiChevronRightOutline color="#000" />,
     prevArrow: <TiChevronLeftOutline color="#000" />,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide: 1
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
   };
 
   return (
-    <div className="flex flex-col justify-center items-center mt-5">
-      <h2 className="text-3xl font-bold uppercase">doctors</h2>
-      <h4 className="text-xl text-gray-400">Select a doctor</h4>
+    <div className="flex flex-col justify-center items-center mt-5 px-4 sm:px-6 lg:px-8">
+      <h2 className="text-3xl font-bold uppercase text-center">doctors</h2>
+      <h4 className="text-xl text-gray-400 text-center">Select a doctor</h4>
 
-      <ul className="mt-10">
-        <div className="flex items-center justify-between gap-10">
-          {/* card slide */}
-          { /* eslint-disable-next-line react/jsx-props-no-spreading */ }
-          <Slider {...settings} className="w-[65rem]">
+      <ul className="mt-10 w-full">
+        <div className="flex items-center justify-center gap-10">
+          <Slider {...settings} className="w-full">
             {doctors.map((item) => (
-              <li key={item.id}>
+              <li key={item.id} className="px-4">
                 <Link to={`/doctors/${item.id}`}>
-                  <img src={item.image} alt={item.name} className="w-80 h-96 rounded-xl" />
+                  <img src={item.image} alt={item.name} className="w-full h-auto rounded-xl object-cover" />
                   <div className="flex flex-col items-center mt-3">
-                    <span className="text-xl font-bold">
-                      Dr.
-                      {' '}
-                      {item.name}
+                    <span className="text-xl font-bold text-center">
+                      Dr. {item.name}
                     </span>
-                    <span className="text-lg tracking-wide">
-                      Specialization is
-                      {' '}
-                      {item.speciality}
+                    <span className="text-lg tracking-wide text-center">
+                      Specialization is {item.speciality}
                     </span>
                     <div className="flex gap-5 py-3">
                       <FaFacebookF className="border-2 border-slate-400 rounded-full p-1 text-2xl text-slate-400" />
