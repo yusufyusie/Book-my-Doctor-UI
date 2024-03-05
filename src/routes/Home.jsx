@@ -2,19 +2,17 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Slider from 'react-slick';
+import { TiChevronLeftOutline, TiChevronRightOutline } from 'react-icons/ti';
 import { fetchDoctors } from '../redux/doctor/doctorSlice';
 import useWindowSize from '../hooks/windowsSize';
 import Doctor from '../components/Doctor';
-import { NextArrow, PrevArrow } from '../components/SliderArrows';
 
 const Home = () => {
   const dispatch = useDispatch();
-  const doctors = useSelector((state) => state.doctor);
+  const doctors = useSelector((state) => state.doctor.doctorsContent.data || []);
   const { windowWidth } = useWindowSize();
 
-  const { data } = doctors;
-
-  console.log(data);
+  console.log(doctors);
 
   useEffect(() => {
     dispatch(fetchDoctors());
@@ -28,19 +26,19 @@ const Home = () => {
     );
   }
 
-  let slidesToshow = 1;
-  if (windowWidth > 1500) {
-    slidesToshow = 3;
+  let slidesToshow = 3;
+  if (windowWidth > 1440) {
+    slidesToshow = 1;
   }
 
   const settings = {
     dots: true,
     infinite: false,
     speed: 500,
-    slidesToShow: { slidesToshow },
+    slidesToShow: slidesToshow,
     slidesToScroll: 1,
-    nextArrow: <NextArrow onClick={() => {}} />,
-    prevArrow: <PrevArrow onClick={() => {}} />,
+    nextArrow: <TiChevronRightOutline color="#000" />,
+    prevArrow: <TiChevronLeftOutline color="#000" />,
   };
 
   return (
@@ -52,7 +50,7 @@ const Home = () => {
         <div className="flex items-center">
           { /* eslint-disable-next-line react/jsx-props-no-spreading */ }
           <Slider {...settings} className="w-[65rem]">
-            {data?.map((item) => (
+            {doctors?.map((item) => (
               <Link to={`/doctors/${item.id}`} key={item.id}>
                 <Doctor
                   name={item.name}
