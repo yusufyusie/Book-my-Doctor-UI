@@ -24,7 +24,7 @@ const Signup = () => {
       password_confirmation: passConfirm,
     };
     // eslint-disable-next-line max-len
-    if (name.length !== 0 && email.length !== 0 && password.length !== 0 && passConfirm.length !== 0) {
+    if (name && email && password && passConfirm) {
       await dispatch(signupUser(addUser));
       setName('');
       setEmail('');
