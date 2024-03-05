@@ -28,17 +28,6 @@ export const postDoctor = createAsyncThunk('doctors/postDoctor', async (postData
   }
 });
 
-export const deleteDoctor = createAsyncThunk('doctor/deletedoctor', async (id, { dispatch, rejectWithValue }) => {
-  try {
-    const headers = getHeaders();
-    await axios.delete(`${doctorURL}${id}`, headers);
-    dispatch(fetchDoctors());
-    return id;
-  } catch (err) {
-    return rejectWithValue(err);
-  }
-});
-
 const doctorSlice = createSlice({
   name: 'doctor',
   initialState,
@@ -48,10 +37,9 @@ const doctorSlice = createSlice({
       .addCase(fetchDoctors.fulfilled, (state, action) => {
         state.doctorsContent = action.payload;
       }).addCase(postDoctor.fulfilled, (state, action) => {
-        state.doctorsContent = [...state.doctorsContent, action.payload];
-      }).addCase(deleteDoctor.fulfilled, (state, action) => {
-        // eslint-disable-next-line max-len
-        state.doctorsContent = state.doctorsContent.filter((doctor) => doctor.id !== action.payload);
+        state.doctorsContent = Array.isArray(state.doctorsContent)
+          ? [...state.doctorsContent, action.payload]
+          : [action.payload];
       });
   },
 });
