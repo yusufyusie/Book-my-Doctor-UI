@@ -38,6 +38,11 @@ const Details = () => {
         {' '}
         <span className="font-semibold">{capitalize(doctor.specialization)}</span>
       </p>
+      <p className="text-xl text-gray-400">
+        Fee:
+        {' '}
+        <span className="font-semibold">{`$${capitalize(doctor.cost)}`}</span>
+      </p>
       {doctor.image_url ? (
         <div
           className="h-52 w-52 md:h-96 md:w-96 bg-cover bg-center rounded-lg shadow-md"
