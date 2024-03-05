@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import {
-  // eslint-disable-next-line no-unused-vars
-  FaVimeoV, FaTwitter, FaFacebookF, FaPinterestP, FaBars, FaTimes,
-} from 'react-icons/fa';
-// import { TiSocialGooglePlus } from 'react-icons/ti';
+import clsx from 'clsx';
+import { FaBars, FaTimes } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import navMenu from '../utils/NavbarData';
@@ -31,21 +28,21 @@ const Navbar = () => {
 
   return (
     <section className="bg-white lg:h-screen lg:border-r-2 lg:w-80">
-      <div className="relative flex flex-col">
+      <div className="flex flex-col">
         {/* logo */}
-        <div className="p-3 z-50 flex items-center justify-between">
-          <img src={Logo} alt="logo" className="w-20 md:w-52 rounded-md" />
+        <div className="p-3 flex items-center justify-between">
+          <img src={Logo} alt="logo" className="w-20 lg:w-52 rounded-md" />
+          {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
           <button
             type="button"
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label="Open or close menu"
-            className="text-2xl md:hidden"
+            onClick={() => setIsOpen(true)}
+            className="text-2xl lg:hidden"
           >
-            {isOpen ? <FaTimes /> : <FaBars /> }
+            <FaBars />
           </button>
         </div>
         {/* nav menu */}
-        <div className="md:flex hidden flex-col mt-10 ml-4 gap-3">
+        <div className="hidden lg:flex flex-col mt-10 ml-4 gap-3">
           {navMenu.map((menu) => (
             <NavLink
               key={menu.id}
@@ -55,16 +52,18 @@ const Navbar = () => {
               {menu.name}
             </NavLink>
           ))}
-          {/* eslint-disable-next-line no-undef */}
           <button type="button" onClick={logoutUser}>
             <span className="uppercase text-gray-800 font-bold text-xl mt-2">logout</span>
           </button>
         </div>
         {/* mobile nav menu */}
-        <div className={`md:hidden bg-white fixed z-50 w-full mt-20 h-screen top-0 overflow-y-auto bottom-0 py-24 pl-4
-        duration-500 ${isOpen ? 'left-0' : 'left-[-100%]'}`}
+        <div className={clsx(' fixed h-full w-screen lg:hidden z-50 bg-black/50  backdrop-blur-sm top-0 right-0  -translate-x-full  transition-all ',
+          isOpen && 'translate-x-0')}
         >
-          <div className="flex flex-col -mt-10 ml-4 gap-3">
+          <div className="bg-slate-300 h-screen flex flex-col z-50 pt-10">
+            <div className="flex justify-end pb-5">
+              <FaTimes onClick={() => setIsOpen(false)} className="text-4xl" />
+            </div>
             {navMenu.map((menu) => (
               <NavLink
                 key={menu.id}
@@ -74,7 +73,6 @@ const Navbar = () => {
                 {menu.name}
               </NavLink>
             ))}
-            {/* eslint-disable-next-line no-undef */}
             <button type="button" onClick={logoutUser}>
               <span className="uppercase text-gray-800 font-bold text-xl mt-2">logout</span>
             </button>
