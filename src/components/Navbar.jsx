@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { FaVimeoV, FaTwitter, FaFacebookF, FaPinterestP, FaBars, FaTimes } from 'react-icons/fa';
-import { TiSocialGooglePlus } from 'react-icons/ti';
+import {
+  // eslint-disable-next-line no-unused-vars
+  FaVimeoV, FaTwitter, FaFacebookF, FaPinterestP, FaBars, FaTimes,
+} from 'react-icons/fa';
+// import { TiSocialGooglePlus } from 'react-icons/ti';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import navMenu from '../utils/NavbarData';
@@ -14,6 +17,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
 
+  console.log(navigate);
   const logoutUser = () => {
     dispatch(logout);
     localStorage.removeItem('userdata');
@@ -21,48 +25,62 @@ const Navbar = () => {
     navigate('/');
   };
 
-  const closeMobileMenu = () => {
+  /* const closeMobileMenu = () => {
     setIsOpen(false);
-  };
+  }; */
 
   return (
-    <section className="relative bg-white shadow-md flex flex-col justify-between h-screen w-full md:w-64 border-r-2 transition-all duration-500 ease-in-out">
-      {/* logo */}
-      <div className="p-2 flex justify-between items-center">
-        <img src={Logo} alt="logo" className="w-20 md:w-52 h-20 md:h-52 rounded-md transition-all duration-500 ease-in-out" />
-        <button type="button" onClick={() => setIsOpen(!isOpen)} aria-label="Open or close menu" className="text-2xl md:hidden bg-gray-800 text-white p-2 rounded">
-          {isOpen ? <FaTimes /> : <FaBars />}
-        </button>
-      </div>
-      {/* nav menu */}
-      <div className={`fixed z-10 inset-0 bg-white transform transition-transform duration-200 ease-in-out ${isOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 md:static md:inset-auto`}>
-        <div className="flex flex-col mt-10 ml-4 gap-3">
+    <section className="bg-white lg:h-screen lg:border-r-2 lg:w-80">
+      <div className="relative flex flex-col">
+        {/* logo */}
+        <div className="p-3 z-50 flex items-center justify-between">
+          <img src={Logo} alt="logo" className="w-20 md:w-52 rounded-md" />
+          <button
+            type="button"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label="Open or close menu"
+            className="text-2xl md:hidden"
+          >
+            {isOpen ? <FaTimes /> : <FaBars /> }
+          </button>
+        </div>
+        {/* nav menu */}
+        <div className="md:flex hidden flex-col mt-10 ml-4 gap-3">
           {navMenu.map((menu) => (
             <NavLink
               key={menu.id}
               to={menu.path}
-              className={({ isActive }) => `text-gray-800 p-1 text-xl uppercase font-bold no-underline transition-colors duration-200 ease-in-out${isActive ? 'text-white bg-lime-500' : ''}`}
-              onClick={closeMobileMenu}
+              className={({ isActive }) => `text-gray-800 p-1 text-xl uppercase font-bold no-underline${isActive ? 'text-white bg-lime-500' : ''}`}
             >
               {menu.name}
             </NavLink>
           ))}
-          <button type="button" onClick={logoutUser} aria-label="Logout" className="mt-2 p-1 text-xl uppercase font-bold text-gray-800">
-            logout
+          {/* eslint-disable-next-line no-undef */}
+          <button type="button" onClick={logoutUser}>
+            <span className="uppercase text-gray-800 font-bold text-xl mt-2">logout</span>
           </button>
         </div>
-      </div>
-      {/* socials */}
-      <footer className="absolute bottom-10 left-4 md:static">
-        <div className="flex justify-center gap-4">
-          <FaTwitter />
-          <FaFacebookF />
-          <TiSocialGooglePlus />
-          <FaVimeoV />
-          <FaPinterestP />
+        {/* mobile nav menu */}
+        <div className={`md:hidden bg-white fixed z-50 w-full mt-20 h-screen top-0 overflow-y-auto bottom-0 py-24 pl-4
+        duration-500 ${isOpen ? 'left-0' : 'left-[-100%]'}`}
+        >
+          <div className="flex flex-col -mt-10 ml-4 gap-3">
+            {navMenu.map((menu) => (
+              <NavLink
+                key={menu.id}
+                to={menu.path}
+                className={({ isActive }) => `text-gray-800 p-1 text-xl uppercase font-bold no-underline${isActive ? 'text-white bg-lime-500' : ''}`}
+              >
+                {menu.name}
+              </NavLink>
+            ))}
+            {/* eslint-disable-next-line no-undef */}
+            <button type="button" onClick={logoutUser}>
+              <span className="uppercase text-gray-800 font-bold text-xl mt-2">logout</span>
+            </button>
+          </div>
         </div>
-        <span className="text-xs">&copy; 2024 microverse final capstone</span>
-      </footer>
+      </div>
     </section>
   );
 };
