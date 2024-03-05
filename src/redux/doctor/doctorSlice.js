@@ -1,78 +1,51 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import getHeaders from '../../api/api_helper';
 
 const doctorURL = 'http://127.0.0.1:3001/api/doctors';
 
 const initialState = {
   doctorsContent: [],
-  status: 'idle',
 };
 
-export const fetchDoctors = createAsyncThunk('doctor/fetchdoctors', async (thunkAPI) => {
-  const token = localStorage.getItem('userdata');
+export const fetchDoctors = createAsyncThunk('doctors/fetchdoctors', async (_, { rejectWithValue }) => {
   try {
-    const response = await axios.get(doctorURL, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    console.log(response);
+    const response = await axios.get(doctorURL, getHeaders());
     return response.data;
   } catch (err) {
-    thunkAPI.rejectWithValue(err);
-    return err;
+    return rejectWithValue(err);
   }
 });
 
-export const postDoctor = createAsyncThunk('doctor/postDoctor', async (data) => {
-  const token = localStorage.getItem('userdata');
-  const newDoctor = {
-    doctor: {
-      name: data.name,
-      specialization: data.specialization,
-      cost: data.cost,
-      image_url: data.image_url,
-    },
-  };
-
+export const postDoctor = createAsyncThunk('doctors/postDoctor', async (postData, { rejectWithValue }) => {
   try {
-    const response = await axios.post(doctorURL, newDoctor, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const headers = getHeaders();
+    const response = await axios.post(doctorURL, postData, { headers });
     toast.success('Added successfully!');
-    return { data, response };
+    return response.data;
   } catch (err) {
-    throw err.response.data;
+    return rejectWithValue(err);
   }
 });
 
-export const fetchDoctor = createAsyncThunk('doctor/fetchDoctor', async (doctorId) => {
-  const token = localStorage.getItem('userdata');
-  const response = await axios.get(`${doctorURL}/${doctorId}`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
-  // const data = response.json();
-  return { res: response.data, doctorId };
+export const fetchDoctorById = createAsyncThunk('doctors/fetchDoctorById', async (id, { rejectWithValue }) => {
+  try {
+    const response = await axios.get(`${doctorURL}${id}`, getHeaders());
+    return { id, res: response.data };
+  } catch (err) {
+    return rejectWithValue(err);
+  }
 });
 
-export const deleteDoctor = createAsyncThunk('doctor/deleteDoctor', async (doctorId, thunkAPI) => {
-  const token = localStorage.getItem('userdata');
+export const deleteDoctor = createAsyncThunk('doctor/deletedoctor', async (id, { dispatch, rejectWithValue }) => {
   try {
-    const res = await axios.delete(`${doctorURL}${doctorId}`, doctorId, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    thunkAPI.dispatch(fetchDoctors());
-    return { doctorId, response: res.data };
+    const headers = getHeaders();
+    await axios.delete(`${doctorURL}${id}`, headers);
+    dispatch(fetchDoctors());
+    return id;
   } catch (err) {
-    thunkAPI.rejectWithValue(err);
-    return err;
+    return rejectWithValue(err);
   }
 });
 
@@ -81,19 +54,12 @@ const doctorSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchDoctors.fulfilled, (state, action) => {
-      state.status = 'success';
-      state.doctorsContent = action.payload;
-    }).addCase(postDoctor.fulfilled, (state, action) => {
-      state.status = 'success';
-      state.doctorsContent.push(action.payload);
-    }).addCase(fetchDoctor.fulfilled, (state, action) => {
-      state.status = 'success';
-      state.doctorsContent = action.payload;
-    }).addCase(deleteDoctor.fulfilled, (state, action) => {
-      state.status = 'success';
-      state.doctorsContent = state.doctorsContent.filter((item) => item.id === action.payload);
-    });
+    builder
+      .addCase(fetchDoctors.fulfilled, (state, action) => action.payload)
+      .addCase(postDoctor.fulfilled, (state, action) => [...state, action.payload]
+        .addCase(fetchDoctorById.fulfilled, (state, action) => action.payload)
+        .addCase(deleteDoctor.fulfilled,
+          (state, action) => state.filter((doctor) => doctor.id === action.payload)));
   },
 });
 
