@@ -33,7 +33,7 @@ Book my doctor is a full stack web application designed for users to view, manag
 
 ## 🚀 Backend <a name="back-end"></a>
 
-[Click here to see the Bookmydoctor backend end](https://github.com/hydaline-code/Book-my-Doctor)
+[Click here to see the Book-my-doctor backend end](https://github.com/hydaline-code/Book-my-Doctor)
 
 ## 🛠 Built With <a name="built-with"></a>
 
