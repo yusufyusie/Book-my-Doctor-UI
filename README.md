@@ -97,6 +97,23 @@ Clone this repository to your desired folder:
   git clone https://github.com/yusufyusie/Book-my-Doctor-UI.git
 ```
 
+### Run tests
+- Check CSS style linter error by running this command:
+`npx stylelint "**/*.{css,scss}"`
+- Check JavaScript linter error by running this command:
+`npx eslint "**/*.{js,jsx}"`
+
+### Install
+1.- Install the project's dependencies by running this command:   
+`npm install`  
+2.- Generate the dist folder using this command:  
+`npm run build`
+
+### Usage
+1.- Run this command to see the page `npm start`  
+2.- To see the code open the project in the code editor of your preference.
+
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 📆 Kanban Board <a name="kanban-board"></a>
