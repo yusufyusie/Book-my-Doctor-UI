@@ -59,11 +59,11 @@ Book my doctor is a full stack web application designed for users to view, manag
 
 ### Key Features <a name="key-features"></a>
 
-> Exposes robust API endpoints to manage and access the application’s rich database.
+> Authentication of users
 
-> Controllers to manage jets and reservations, allowing CRUD (Create, Read, Update, Delete) operations.
+> Adding doctors and appointments
 
-> Secure user authentication and profile management
+> Viewing doctors and appointments
 > API documentation
 
 <!-- <p align="right">(<a href="#readme-top">back to top</a>)</p> -->
@@ -108,6 +108,7 @@ Clone this repository to your desired folder:
 - screenshot of kanban board as project work is in progress
   ![screenshot_2024-03-06_094616_720](https://github.com/yusufyusie/Book-my-Doctor-UI/assets/77404317/e71ba3d7-85ec-4a0d-adea-a023012adea7)
 - screenshot of kanban board at the end of the project
+  ![Screenshot 2024-03-06 143522](https://github.com/yusufyusie/Book-my-Doctor-UI/assets/77404317/b7132e0b-df3c-4d81-b8e4-58df70a261e6)
 <!-- CONTRIBUTING -->
 
 <!-- AUTHORS -->
