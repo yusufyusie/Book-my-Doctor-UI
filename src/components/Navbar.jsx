@@ -14,7 +14,6 @@ const Navbar = () => {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
 
-  console.log(navigate);
   const logoutUser = () => {
     dispatch(logout);
     localStorage.removeItem('userdata');
