@@ -1,26 +1,15 @@
-import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { FaArrowLeft } from 'react-icons/fa';
-import { fetchDoctors } from '../redux/doctor/doctorSlice';
+import {
+  FaFacebookF, FaTwitter, FaCameraRetro, FaArrowLeft,
+} from 'react-icons/fa';
+import doctors from '../utils/DoctorData';
 
 const Details = () => {
   const { doctorId } = useParams();
-  const dispatch = useDispatch();
-  const doctors = useSelector((state) => state.doctor.doctorsContent.data || []);
-
-  const doctor = doctors.find((item) => item.id === parseInt(doctorId, 10));
-
-  useEffect(() => {
-    dispatch(fetchDoctors());
-  }, [dispatch]);
+  const doctor = doctors.find((doc) => Number(doc.id) === Number(doctorId));
 
   if (!doctor) {
-    return (
-      <div className="flex items-center justify-center mt-32">
-        <p className="text-2xl font-bold text-red-500">Doctor not found</p>
-      </div>
-    );
+    return <p className="text-2xl font-bold text-red-500">Doctor not found</p>;
   }
 
   const capitalize = (str) => str.split(' ').map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(' ');
@@ -36,23 +25,23 @@ const Details = () => {
       <p className="text-xl text-gray-400">
         Specialization:
         {' '}
-        <span className="font-semibold">{capitalize(doctor.specialization)}</span>
+        <span className="font-semibold">{capitalize(doctor.speciality)}</span>
       </p>
-      <p className="text-xl text-gray-400">
-        Fee:
-        {' '}
-        <span className="font-semibold">{`$${capitalize(doctor.cost)}`}</span>
-      </p>
-      {doctor.image_url ? (
+      {doctor.image ? (
         <div
           className="h-52 w-52 md:h-96 md:w-96 bg-cover bg-center rounded-lg shadow-md"
-          style={{ backgroundImage: `url(${doctor.image_url})` }}
+          style={{ backgroundImage: `url(${doctor.image})` }}
         />
       ) : (
         <div className="h-52 w-52 md:h-96 md:w-96 bg-cover bg-center rounded-lg shadow-md flex items-center justify-center text-2xl text-gray-500">
           No image provided
         </div>
       )}
+      <div className="flex gap-5 py-3">
+        <FaFacebookF className="border-2 border-slate-400 rounded-full p-1 text-2xl text-slate-400" />
+        <FaTwitter className="border-2 border-slate-400 rounded-full p-1 text-2xl text-slate-400" />
+        <FaCameraRetro className="border-2 border-slate-400 rounded-full p-1 text-2xl text-slate-400" />
+      </div>
     </div>
   );
 };
