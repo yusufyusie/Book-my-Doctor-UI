@@ -24,19 +24,19 @@ const Reservation = () => {
     <div className="flex flex-col gap-12 p-8 mx-auto">
       <h1 className="text-2xl font-bold">Your appointments</h1>
       <ul className="flex flex-col gap-8 max-w-xs md:max-w-3xl">
-        {appoint.map((item, index) => {
+        {appoint.map((item) => {
           const rawdate = item.user.date_of_appointment;
           const dateObj = new Date(rawdate);
           const formatDate = dateObj.toISOString().split('T')[0];
           return (
-            <li key={index} className="flex flex-col md:flex-row gap-8 bg-green-50 rounded-lg shadow-lg p-8">
+            <li key={item.id} className="flex flex-col md:flex-row gap-8 bg-green-50 rounded-lg shadow-lg p-8">
               <div>
                 <img src={appointImg} alt="appoint" className="w-80 h-48 rounded-xl" />
               </div>
               <div className="flex flex-col gap-4 mt-4">
                 <h2 className="text-xl font-bold">
                   Appointment #
-                  {index + 1}
+                  {item.id}
                 </h2>
                 <p className="">
                   Doctor Appointed:&nbsp;

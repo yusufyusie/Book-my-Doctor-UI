@@ -57,7 +57,7 @@ const Home = () => {
         },
       },
     ],
-  }
+  };
   return (
     <>
       <Greetings />
