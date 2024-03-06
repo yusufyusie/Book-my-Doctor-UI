@@ -78,13 +78,8 @@ const DeleteDoc = () => {
         <div>
           {/* card slide */}
           { /* eslint-disable-next-line react/jsx-props-no-spreading */ }
-<<<<<<< HEAD
           <Slider {...settings} className="w-72 md:w-[40rem] lg:w-[65rem]">
             {doctors.map((item) => (
-=======
-          <Slider {...settings} className="w-[65rem]">
-            {doctorsData.map((item) => (
->>>>>>> dev
               <li key={item.id}>
                 <div>
                   <img src={item.image_url} alt={item.name} className="w-80 h-96 rounded-xl" />
