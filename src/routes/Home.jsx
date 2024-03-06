@@ -37,7 +37,7 @@ const Home = () => {
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
-          infinite: true,
+          infinite: false,
           dots: true,
         },
       },
@@ -61,14 +61,14 @@ const Home = () => {
   return (
     <>
       <Greetings />
-      <div className="flex flex-col justify-center items-center mt-5">
+      <div className="flex flex-col justify-center w-screen lg:w-full items-center mt-5">
         <h2 className="text-3xl font-bold uppercase">doctors</h2>
         <h4 className="text-xl text-gray-400">Select a doctor</h4>
 
         <div className="mt-10">
           <div className="flex items-center justify-center">
             { /* eslint-disable-next-line react/jsx-props-no-spreading */ }
-            <Slider {...settings} className="w-[65rem]">
+            <Slider {...settings} className="w-[20rem] md:w-[45rem] lg:w-[65rem]">
               {doctors?.map((item) => (
                 <Link to={`/doctors/${item.id}`} key={item.id}>
                   <Doctor
