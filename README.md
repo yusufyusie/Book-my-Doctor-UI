@@ -105,6 +105,9 @@ Clone this repository to your desired folder:
 
 - We are a team of 3 members as indicated in the authors section
 - You can find the kanban board for the backend [here](https://github.com/users/hydaline-code/projects/5/views/1)
+- screenshot of kanban board as project work is in progress
+  ![screenshot_2024-03-06_094616_720](https://github.com/yusufyusie/Book-my-Doctor-UI/assets/77404317/e71ba3d7-85ec-4a0d-adea-a023012adea7)
+- screenshot of kanban board at the end of the project
 <!-- CONTRIBUTING -->
 
 <!-- AUTHORS -->
