@@ -26,7 +26,7 @@ function App() {
           <Route path=":doctorId" element={<Details />} />
           <Route path="delete" element={<DeleteDoc />} />
         </Route>
-        <Route path="reservations" element={<Layout />}>
+        <Route path="appointments" element={<Layout />}>
           <Route index element={<Reservation />} />
           <Route path="new" element={<NewReservation />} />
         </Route>
