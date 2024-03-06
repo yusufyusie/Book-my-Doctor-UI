@@ -1,14 +1,10 @@
 // eslint-disable-next-line no-unused-vars
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-<<<<<<< HEAD
-// import axios from 'axios';
-=======
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import getHeaders from '../../api/api_helper';
 
 const doctorURL = 'http://127.0.0.1:3001/api/doctors';
->>>>>>> dev
 
 const initialState = {
   doctorsContent: [],
