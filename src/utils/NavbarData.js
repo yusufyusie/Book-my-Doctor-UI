@@ -6,13 +6,13 @@ const navMenu = [
   },
   {
     id: 2,
-    path: '/reservations/new',
+    path: '/appointments/new',
     name: 'Book an Appointment',
   },
   {
     id: 3,
-    path: '/reservations',
-    name: 'Reservations',
+    path: '/appointments',
+    name: 'Appointments',
   },
 
   {
