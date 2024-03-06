@@ -40,6 +40,8 @@ const Reservation = () => {
                 </h2>
                 <p className="">
                   Doctor Appointed:&nbsp;
+                  Dr.
+                  {' '}
                   {item.doctor.name}
                 </p>
                 <p className="">
