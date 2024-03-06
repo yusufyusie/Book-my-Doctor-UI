@@ -13,17 +13,43 @@ const DeleteDoc = () => {
     slidesToScroll: 1,
     nextArrow: <TiChevronRightOutline color="#000" />,
     prevArrow: <TiChevronLeftOutline color="#000" />,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide: 1,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
   return (
-    <div className="flex flex-col justify-center items-center mt-5">
+    <div className="flex flex-col justify-center items-center w-screen lg:w-full mt-5">
       <h2 className="text-3xl font-bold uppercase">delete doctors</h2>
       <h4 className="text-xl text-gray-400">Select a doctor to delete</h4>
 
       <ul className="mt-10">
-        <div className="flex items-center justify-between gap-10">
+        <div>
           {/* card slide */}
           { /* eslint-disable-next-line react/jsx-props-no-spreading */ }
-          <Slider {...settings} className="w-[65rem]">
+          <Slider {...settings} className="w-72 md:w-[40rem] lg:w-[65rem]">
             {doctors.map((item) => (
               <li key={item.id}>
                 <div>
