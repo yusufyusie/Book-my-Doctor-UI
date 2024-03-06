@@ -24,7 +24,7 @@ const Reservation = () => {
     <div className="flex flex-col gap-12 p-8 mx-auto">
       <h1 className="text-2xl font-bold">Your appointments</h1>
       <ul className="flex flex-col gap-8 max-w-xs md:max-w-3xl">
-        {appoint.map((item) => {
+        {appoint.map((item, index) => {
           const rawdate = item.user.date_of_appointment;
           const dateObj = new Date(rawdate);
           const formatDate = dateObj.toISOString().split('T')[0];
@@ -36,7 +36,7 @@ const Reservation = () => {
               <div className="flex flex-col gap-4 mt-4">
                 <h2 className="text-xl font-bold">
                   Appointment #
-                  {item.id}
+                  {index + 1}
                 </h2>
                 <p className="">
                   Doctor Appointed:&nbsp;
