@@ -38,7 +38,7 @@ const Details = () => {
         {' '}
         <span className="font-semibold">{capitalize(doctor.specialization)}</span>
       </p>
-      {doctor.image ? (
+      {doctor.image_url ? (
         <div
           className="h-52 w-52 md:h-96 md:w-96 bg-cover bg-center rounded-lg shadow-md"
           style={{ backgroundImage: `url(${doctor.image_url})` }}
