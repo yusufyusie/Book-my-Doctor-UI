@@ -31,9 +31,9 @@ const AddDoctor = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col gap-8 justify-center items-center w-full bg-gray-100 py-6 sm:px-6 lg:px-8">
-      <div className="mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+    <div className="min-h-screen flex flex-col gap-8 justify-center items-center w-screen lg:w-full bg-gray-100 py-6 px-6 lg:px-8">
+      <div className="mx-auto w-11/12 md:w-1/2">
+        <div className="bg-white -mt-20 md:-mt-72 lg:mt-0 py-8 px-4 shadow rounded-xl sm:px-10">
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
             Add a doctor
           </h2>

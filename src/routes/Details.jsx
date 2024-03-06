@@ -26,7 +26,7 @@ const Details = () => {
   const capitalize = (str) => str.split(' ').map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(' ');
 
   return (
-    <div className="flex flex-col items-center gap-4 bg-white rounded-lg p-8 shadow-lg">
+    <div className="flex flex-col items-center w-screen md:h-screen lg:w-full gap-4 bg-white rounded-lg p-8 shadow-lg">
       <Link to="/doctors" className="self-start mb-2 text-blue-700 text-2xl flex items-center">
         <FaArrowLeft className="mr-2" />
         {' '}
@@ -37,11 +37,6 @@ const Details = () => {
         Specialization:
         {' '}
         <span className="font-semibold">{capitalize(doctor.specialization)}</span>
-      </p>
-      <p className="text-xl text-gray-400">
-        Fee:
-        {' '}
-        <span className="font-semibold">{`$${capitalize(doctor.cost)}`}</span>
       </p>
       {doctor.image_url ? (
         <div
