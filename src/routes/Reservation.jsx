@@ -18,6 +18,7 @@ const Reservation = () => {
     );
   }
 
+  const appointImg = 'https://images.pexels.com/photos/7089401/pexels-photo-7089401.jpeg?auto=compress&cs=tinysrgb&w=600';
 
   return (
     <div className="flex flex-col gap-12 p-8 mx-auto">
@@ -38,7 +39,9 @@ const Reservation = () => {
                   {index + 1}
                 </h2>
                 <p className="">
-               
+                  Doctor Appointed:&nbsp;
+                  Dr.
+                  {' '}
                   {item.doctor.name}
                 </p>
                 <p className="">
