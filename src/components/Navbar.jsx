@@ -26,7 +26,7 @@ const Navbar = () => {
   }; */
 
   return (
-    <section className="bg-white lg:h-screen lg:border-r-2 lg:w-80">
+    <section className="bg-white lg:h-screen lg:border-r-2 lg:w-60">
       <div className="flex flex-col">
         {/* logo */}
         <div className="p-3 flex items-center justify-between">
