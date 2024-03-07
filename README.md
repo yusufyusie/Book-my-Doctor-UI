@@ -1,70 +1,209 @@
-# Getting Started with Create React App
+<!-- TABLE OF CONTENTS -->
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 📗 Table of Contents
 
-## Available Scripts
+- [📖 About the Project](#about-project)
+  - [🚀 Back End](#back-end)
+  - [🛠 Built With](#built-with)
+    - [Tech Stack](#tech-stack)
+    - [Key Features](#key-features)
+  - [🚀 Live Demo](#live-demo)
+- [💻 Getting Started](#getting-started)
+  - [Setup](#setup)
+  - [Prerequisites](#prerequisites)
+  - [Install](#install)
+  - [Usage](#usage)
+  - [Setup .ENV](#setup-env)
+  - [Run tests](#run-tests)
+  - [Deployment](#triangular_flag_on_post-deployment)
+- [📆 Kanban Board ](#kanban-board)
+- [👥 Authors](#authors)
+- [🔭 Future Features](#future-features)
+- [🤝 Contributing](#contributing)
+- [⭐️ Show your support](#support)
+- [🙏 Acknowledgements](#acknowledgements)
+- [🙏 Attribution](#attribution)
+- [📝 License](#license)
 
-In the project directory, you can run:
+<!-- PROJECT DESCRIPTION -->
 
-### `npm start`
+# 📖 [Book-my-doctor-Frontend] <a name="about-project"></a>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Book my doctor is a full stack web application designed for users to view, manage and also appoint a doctor.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🚀 Backend <a name="back-end"></a>
 
-### `npm test`
+[Click here to see the Book-my-doctor backend end](https://github.com/hydaline-code/Book-my-Doctor)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🛠 Built With <a name="built-with"></a>
 
-### `npm run build`
+### Tech Stack <a name="tech-stack"></a>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  <details>
+  <summary>Version Control System</summary>
+  <ul>
+    <li><a href="https://git-scm.com/">Git</a></li>
+  </ul>
+</details>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<details>
+  <summary>Frontend Framework</summary>
+  <ul>
+    <li><a href="https://react.dev/">React JS</a></li>
+    <li><a href="https://redux.js.org/">Redux</a></li>
+    <li><a href="https://tailwindcss.com/">Tailwind CSS</a></li>
+  </ul>
+</details>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<!-- Features -->
 
-### `npm run eject`
+### Key Features <a name="key-features"></a>
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+> Authentication of users
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+> Adding doctors and appointments
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+> Viewing doctors and appointments
+> API documentation
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<!-- <p align="right">(<a href="#readme-top">back to top</a>)</p> -->
 
-## Learn More
+<!-- LIVE DEMO -->
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🚀 Live Demo <a name="live-demo"></a>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+> Live Demo of this application:
 
-### Code Splitting
+- [not yet ready]()
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-### Analyzing the Bundle Size
+<!-- GETTING STARTED -->
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 💻 Getting Started <a name="getting-started"></a>
 
-### Making a Progressive Web App
+To get a local copy up and running, follow these steps.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Prerequisites
 
-### Advanced Configuration
+In order to run this project you need:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Setup
 
-### Deployment
+Clone this repository to your desired folder:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```sh
+  cd Book-my-Doctor-UI
+  git clone https://github.com/yusufyusie/Book-my-Doctor-UI.git
+```
 
-### `npm run build` fails to minify
+### Run tests
+- Check CSS style linter error by running this command:
+`npx stylelint "**/*.{css,scss}"`
+- Check JavaScript linter error by running this command:
+`npx eslint "**/*.{js,jsx}"`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Install
+1.- Install the project's dependencies by running this command:   
+`npm install`  
+2.- Generate the dist folder using this command:  
+`npm run build`
+
+### Usage
+1.- Run this command to see the page `npm start`  
+2.- To see the code open the project in the code editor of your preference.
+
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## 📆 Kanban Board <a name="kanban-board"></a>
+
+- [Kanban board](https://github.com/users/yusufyusie/projects/27/views/1)
+
+- We are a team of 3 members as indicated in the authors section
+- You can find the kanban board for the backend [here](https://github.com/users/hydaline-code/projects/5/views/1)
+- screenshot of kanban board as project work is in progress
+  ![screenshot_2024-03-06_094616_720](https://github.com/yusufyusie/Book-my-Doctor-UI/assets/77404317/e71ba3d7-85ec-4a0d-adea-a023012adea7)
+- screenshot of kanban board at the end of the project
+  ![Screenshot 2024-03-06 143522](https://github.com/yusufyusie/Book-my-Doctor-UI/assets/77404317/b7132e0b-df3c-4d81-b8e4-58df70a261e6)
+<!-- CONTRIBUTING -->
+
+<!-- AUTHORS -->
+
+## 👥 Authors <a name="authors"></a>
+
+👤 Hydaline
+
+- GitHub: [@hydaline](https://github.com/hydaline-dev)
+- LinkedIn: [@hydaline](https://www.linkedin.com/in/hydaline-djougang-0851aa21a/)
+
+👤 Fombi Favour
+
+- GitHub: [Fombi-Favour](https://github.com/Fombi-Favour)
+- LinkedIn: [Fombi Favour](https://www.linkedin.com/in/fombi-favour/)
+
+👤 Yesuf Fenta
+- GitHub: [@yusufyusie](https://github.com/yusufyusie)
+- LinkedIn: [in/yusufyusie](https://www.linkedin.com/in/yusufyusie)
+- Twitter: [@yusufyusiee](https://twitter.com/yusufyusiee)
+
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- FUTURE FEATURES -->
+
+## 🔭 Future Features <a name="future-features"></a>
+
+> Video Presentation demo of the project
+
+> Deploy the application on render
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- Kanban Board -->
+
+## 🤝 Contributing <a name="contributing"></a>
+
+Contributions, issues, and feature requests are welcome!
+
+Feel free to check the [issues page](https://github.com/hydaline-code/Book-my-Doctor/issues).
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- SUPPORT -->
+
+## <b>Show your support 🌟</b><a name="support"></a>
+
+Thank you for taking the time to explore this project! Your support means a lot to us. If you find my project valuable and would like to contribute, here is one way you can support me:
+
+- <b>Star the project ⭐️</b>: Show your appreciation by starring this GitHub repository. It helps increase visibility and lets others know that the project is well-received.
+
+- <b>Fork the project 🍴 🎣</b>: If you're interested in making improvements or adding new features, feel free to fork the project. You can work on your own version and even submit pull requests to suggest changes.
+
+- <b>Share with others 🗺️</b>: Spread the word about this project. Share it on social media, mention it in relevant forums or communities, or recommend it to colleagues and friends who might find it useful.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- ACKNOWLEDGEMENTS -->
+
+## 🙏 Acknowledgments <a name="acknowledgements"></a>
+
+We would like to express my sincere gratitude to [Microverse](https://github.com/microverseinc), the dedicated reviewers, and collaborators. Your unwavering support, feedback, and collaborative efforts have played an immense role in making this journey a resounding success.
+A big thank you to [Murat Korkmaz](https://www.behance.net/muratk) for the providing the UX design inspiration for this project.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+<!-- ATTRIBUTION -->
+
+## 👥 Attribution <a name="attribution"></a>
+
+- This application's front-end UI design is based on the original design by: [Murat Korkmaz](https://www.behance.net/muratk)
+
+<!-- LICENSE -->
+
+## 📝 License <a name="license"></a>
+
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
