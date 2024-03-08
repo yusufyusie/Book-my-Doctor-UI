@@ -2,8 +2,8 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-const signinUrl = 'https://book-my-doctor-2jsx.onrender.com/login';
-const signupUrl = 'https://book-my-doctor-2jsx.onrender.com/signup';
+const signinUrl = `${process.env.REACT_APP_BASE_URL}/login`;
+const signupUrl = `${process.env.REACT_APP_BASE_URL}/signup`;
 
 const initialState = {
   userContent: [],
