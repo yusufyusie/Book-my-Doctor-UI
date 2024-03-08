@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const RESERVATIONS_URL =  `${process.env.REACT_APP_BASE_URL}/api/v1/appointments`;
+const RESERVATIONS_URL = `${process.env.REACT_APP_BASE_URL}/api/v1/appointments`;
 
 export const postReservation = createAsyncThunk(
   'reservations/postReservation',
