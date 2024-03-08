@@ -50,7 +50,7 @@ const DeleteDoc = () => {
 
   const handleDelete = async (doctorId) => {
     try {
-      await axios.delete(`http://127.0.0.1:3001/api/doctors/${doctorId}`, getHeaders());
+      await axios.delete(`${process.env.REACT_APP_BASE_URL}/api/doctors/${doctorId}`, getHeaders());
       dispatch(fetchDoctors());
     } catch (error) {
       toast.error(`Failed to delete doctor ${error}`);
