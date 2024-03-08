@@ -3,7 +3,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import getHeaders from '../../api/api_helper';
 
-const appointURL = 'http://127.0.0.1:3001/api/appointments';
+const appointURL = 'https://book-my-doctor-2jsx.onrender.com/api/appointments';
 
 const initialState = {
   appointContent: '',
