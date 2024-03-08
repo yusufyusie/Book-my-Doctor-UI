@@ -74,7 +74,7 @@ Book my doctor is a full stack web application designed for users to view, manag
 
 > Live Demo of this application:
 
-- [not yet ready]()
+- [**Deployed frontend**](https://book-my-doctor-ui-wngd.onrender.com)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
