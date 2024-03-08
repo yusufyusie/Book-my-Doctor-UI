@@ -2,8 +2,8 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-const signinUrl = 'http://127.0.0.1:3001/login';
-const signupUrl = 'http://127.0.0.1:3001/signup';
+const signinUrl = 'https://book-my-doctor-2jsx.onrender.com/login';
+const signupUrl = 'https://book-my-doctor-2jsx.onrender.com/signup';
 
 const initialState = {
   userContent: [],
