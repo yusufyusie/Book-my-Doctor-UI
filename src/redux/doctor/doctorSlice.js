@@ -4,7 +4,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import getHeaders from '../../api/api_helper';
 
-const doctorURL = 'https://book-my-doctor-2jsx.onrender.com/api/doctors';
+const doctorURL =  `${process.env.REACT_APP_BASE_URL}/api/doctors`;
 
 const initialState = {
   doctorsContent: [],
